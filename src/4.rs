@@ -1,3 +1,8 @@
+/*
+Detect single-character XOR
+One of the 60-character strings in this file has been encrypted by single-character XOR.
+*/
+
 use std::env;
 use std::fs::File;
 use std::io::{Read, Lines};
