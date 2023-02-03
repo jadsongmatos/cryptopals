@@ -1,5 +1,4 @@
 use std::env;
-use std::collections::HashMap;
 
 fn hex_to_string(input: String) -> Result<String, std::num::ParseIntError> {
     let mut result = String::new();
@@ -42,33 +41,34 @@ fn analyze_text(text: &String) -> f32 {
     let mut letters: f32 = 0.0;
     for c in text.chars() {
         letters = letters + 1.0;
-        score += match c {
-            'a' | 'A' => 8.167,
-            'b' | 'B' => 1.492,
-            'c' | 'C' => 2.782,
-            'd' | 'D' => 4.253,
-            'e' | 'E' => 12.702,
-            'f' | 'F' => 2.228,
-            'g' | 'G' => 2.015,
-            'h' | 'H' => 6.094,
-            'i' | 'I' => 6.966,
-            'j' | 'J' => 0.153,
-            'k' | 'K' => 0.772,
-            'l' | 'L' => 4.025,
-            'm' | 'M' => 2.406,
-            'n' | 'N' => 6.749,
-            'o' | 'O' => 7.507,
-            'p' | 'P' => 1.929,
-            'q' | 'Q' => 0.095,
-            'r' | 'R' => 5.987,
-            's' | 'S' => 6.327,
-            't' | 'T' => 9.056,
-            'u' | 'U' => 2.758,
-            'v' | 'V' => 0.978,
-            'w' | 'W' => 2.360,
-            'x' | 'X' => 0.150,
-            'y' | 'Y' => 1.974,
-            'z' | 'Z' => 0.074,
+        score += match c.to_ascii_lowercase() {
+            'a' => 8.167,
+            'b' => 1.492,
+            'c' => 2.782,
+            'd' => 4.253,
+            'e' => 12.702,
+            'f' => 2.228,
+            'g' => 2.015,
+            'h' => 6.094,
+            'i' => 6.966,
+            'j' => 0.153,
+            'k' => 0.772,
+            'l' => 4.025,
+            'm' => 2.406,
+            'n' => 6.749,
+            'o' => 7.507,
+            'p' => 1.929,
+            'q' => 0.095,
+            'r' => 5.987,
+            's' => 6.327,
+            't' => 9.056,
+            'u' => 2.758,
+            'v' => 0.978,
+            'w' => 2.360,
+            'x' => 0.150,
+            'y' => 1.974,
+            'z' => 0.074,
+            ' ' => 4.0,
             _ => 0.0,
         };
     }
@@ -98,11 +98,7 @@ fn test_key(input: &str) -> TestKeys {
 
     for n in 0..255 {
         old.text = cipher_xor(input, n);
-        old.score = analyze_text(&old.text) ;
-        println!("testkey {} {}", n, old.score);
-        if n == 88 {
-            println!("{} {:?} {}", n,old.text, old.score);
-        }
+        old.score = analyze_text(&old.text);
         if old.score >= best.score {
             best.text = old.text;
             best.score = old.score;
