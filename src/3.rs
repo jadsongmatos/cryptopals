@@ -1,8 +1,6 @@
 use std::env;
-use std::fs::File;
-use std::io::{Read, Lines};
 
-fn hex_to_string(input: &str) -> Result<String, std::num::ParseIntError> {
+fn hex_to_string(input: String) -> Result<String, std::num::ParseIntError> {
     let mut result = String::new();
     let mut chars = input.chars().enumerate();
 
@@ -110,27 +108,12 @@ fn test_key(input: &str) -> TestKeys {
     }
     return best;
 }
-
+/*
 fn main() {
-    let mut file = File::open("/home/jadson/desktop/desafio/4.txt").unwrap();
-    let mut contents = String::new();
-    file.read_to_string(&mut contents).unwrap();
-
-    let lines = contents.lines();
-    let mut index: u32 = 0;
-    let mut best_score: f32 = 0.0;
-    let mut best: u32 = 0;
-    let mut best_result = TestKeys {
-        text: String::from(""),
-        key: 0,
-        score: -1.0,
-    };
-
-    for line in lines {
-        index = index + 1;
-        //println!("{}", line);
-
-        let hex = match hex_to_string(line) {
+    let args: Vec<String> = env::args().collect();
+    println!("{:?}", args);
+    if args.len() > 1 {
+        let hex = match hex_to_string(args[1].clone()) {
             Err(e) => {
                 println!("Error: {}", e);
                 std::process::exit(1);
@@ -138,14 +121,17 @@ fn main() {
             Ok(f) => f,
         };
 
-        let result = test_key(hex.as_str());
+        println!("{:?}", hex);
 
-        if result.score > best_score {
-            println!("line: {} text: {:?} score: {:?} key: {}", best, result.text, result.score, result.key);
-            best_score = result.score;
-            best = index;
-            best_result = result;
-        }
+        let result = test_key(hex.as_str());
+        println!("text: {:?} score: {:?} key: {}", result.text, result.score, result.key);
+
+        //let score_en = analyze_text(hex.as_str());
+        //println!("{:?}", score_en);
+
+        std::process::exit(0);
+    } else {
+        std::process::exit(7);
     }
-    println!("line: {} text: {:?} score: {:?} key: {}", best, best_result.text, best_result.score, best_result.key);
 }
+*/
