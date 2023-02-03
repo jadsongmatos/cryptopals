@@ -45,7 +45,6 @@ fn hex_to_base64(hex_string: String) -> String {
     base64_encoded
 }
 
-/*
 fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args);
@@ -58,7 +57,6 @@ fn main() {
            Ok(f) => f,
         };
 
-
         println!("{:?}", hex);
         let b64 = hex_to_base64(hex);
         println!("{}", b64);
@@ -67,4 +65,3 @@ fn main() {
         std::process::exit(7);
     }
 }
-*/

@@ -141,7 +141,6 @@ fn main() {
         let result = test_key(hex.as_str());
 
         if result.score > best_score {
-            println!("line: {} text: {:?} score: {:?} key: {}", best, result.text, result.score, result.key);
             best_score = result.score;
             best = index;
             best_result = result;

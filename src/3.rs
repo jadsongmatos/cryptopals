@@ -108,7 +108,7 @@ fn test_key(input: &str) -> TestKeys {
     }
     return best;
 }
-/*
+
 fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args);
@@ -126,12 +126,8 @@ fn main() {
         let result = test_key(hex.as_str());
         println!("text: {:?} score: {:?} key: {}", result.text, result.score, result.key);
 
-        //let score_en = analyze_text(hex.as_str());
-        //println!("{:?}", score_en);
-
         std::process::exit(0);
     } else {
         std::process::exit(7);
     }
 }
-*/

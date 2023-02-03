@@ -39,7 +39,7 @@ fn cipher_xor(a: &str, b: &str) -> String {
     String::from_utf8(xor_result).expect("XOR result is not valid UTF-8")
 }
 
-/*
+
 fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args);
@@ -65,10 +65,8 @@ fn main() {
         println!("{:?}", xor);
         let result = cipher_xor(hex.as_str(),xor.as_str());
         println!("result: {:?}", result);
-        //string_to_hex
 
         let result_hex = result.as_bytes().iter().map(|x| format!("{:02x}", x)).collect::<String>();
-
 
         println!("{:?}", result_hex);
         std::process::exit(0);
@@ -76,4 +74,3 @@ fn main() {
         std::process::exit(7);
     }
 }
-*/
