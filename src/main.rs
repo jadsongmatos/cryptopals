@@ -95,6 +95,7 @@ fn analyze_text(text: &String) -> f32 {
             'Y' => score = score + 1.974,
             'z' => score = score + 0.074,
             'Z' => score = score + 0.074,
+            ' ' => score = score + 1.0,
             _ => {}
         }
     }
